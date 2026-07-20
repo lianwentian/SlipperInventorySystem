@@ -1,0 +1,31 @@
+# Ignore build outputs
+bin/
+obj/
+publish/
+
+# Ignore database files
+*.db
+*.db-shm
+*.db-wal
+
+# Ignore IDE files
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Ignore user-specific files
+*.user
+*.suo
+
+# Ignore NuGet directories
+.nuget/packages/
+
+# Ignore temporary files
+temp/
+tmp/
+
+# Product images folder (can be large)
+ProductImages/
