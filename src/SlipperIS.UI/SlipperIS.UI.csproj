@@ -18,8 +18,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageReference Include="EPPlus" Version="7.0.0" />
-    <PackageReference Include="itext7" Version="8.0.0" />
-    <PackageReference Include="itext7.pdfhtml" Version="8.0.0" />
+    <PackageReference Include="itext7" Version="7.2.5" />
   </ItemGroup>
 
   <ItemGroup>
