@@ -1,0 +1,35 @@
+<Window x:Class="SlipperIS.UI.Views.RoleEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="角色信息" Height="240" Width="360"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <DockPanel Margin="15">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="保存" Click="Save_Click" Background="#2196F3" Foreground="White"
+                    Padding="20,7" Margin="0,0,5,0" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="取消" Click="Cancel_Click" Padding="20,7" Cursor="Hand"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="角色名称 *" VerticalAlignment="Center" Margin="0,8"/>
+            <TextBox x:Name="NameBox" Grid.Row="0" Grid.Column="1" Margin="0,8" Padding="5,3"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="描述" VerticalAlignment="Center" Margin="0,8"/>
+            <TextBox x:Name="DescBox" Grid.Row="1" Grid.Column="1" Margin="0,8" Padding="5,3"
+                     Height="50" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="启用" VerticalAlignment="Center" Margin="0,8"/>
+            <CheckBox x:Name="ActiveCheck" Grid.Row="2" Grid.Column="1" Margin="0,8" VerticalAlignment="Center"
+                      IsChecked="True"/>
+        </Grid>
+    </DockPanel>
+</Window>

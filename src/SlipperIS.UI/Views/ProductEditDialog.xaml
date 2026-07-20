@@ -1,0 +1,67 @@
+<Window x:Class="SlipperIS.UI.Views.ProductEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="产品信息" Height="460" Width="420"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <DockPanel Margin="15">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button x:Name="SaveBtn" Content="保存" Click="Save_Click" Background="#2196F3" Foreground="White"
+                    Padding="20,7" Margin="0,0,5,0" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="取消" Click="Cancel_Click" Padding="20,7" Cursor="Hand"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="产品代码 *" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="CodeBox" Grid.Row="0" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="产品名称 *" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="NameBox" Grid.Row="1" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="分类" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="CategoryBox" Grid.Row="2" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="规格" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="SpecBox" Grid.Row="3" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="单位" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="UnitBox" Grid.Row="4" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="成本价 *" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="CostBox" Grid.Row="5" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="销售价 *" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="SalePriceBox" Grid.Row="6" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Text="VIP价" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="VipPriceBox" Grid.Row="7" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="8" Grid.Column="0" Text="最低库存" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="MinStockBox" Grid.Row="8" Grid.Column="1" Margin="0,5" Padding="5,3"/>
+
+            <TextBlock Grid.Row="9" Grid.Column="0" Text="描述" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="DescBox" Grid.Row="9" Grid.Column="1" Margin="0,5" Padding="5,3" Height="50"
+                     TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+
+            <TextBlock Grid.Row="10" Grid.Column="0" Text="启用" VerticalAlignment="Center" Margin="0,5"/>
+            <CheckBox x:Name="ActiveCheck" Grid.Row="10" Grid.Column="1" Margin="0,5" VerticalAlignment="Center"
+                      IsChecked="True"/>
+        </Grid>
+    </DockPanel>
+</Window>
