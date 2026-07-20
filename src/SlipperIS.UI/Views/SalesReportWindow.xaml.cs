@@ -16,10 +16,14 @@ public partial class SalesReportWindow : Window
     {
         InitializeComponent();
         _db = AppDbContextFactory.CreateContext();
-        DpStart.SelectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+        DpStart.SelectedDate = FirstDayOfCurrentMonth();
         DpEnd.SelectedDate = DateTime.Today;
         LoadReport();
     }
+
+    /// <summary>返回当月第一天的日期</summary>
+    private static DateTime FirstDayOfCurrentMonth() =>
+        new(DateTime.Today.Year, DateTime.Today.Month, 1);
 
     private void LoadReport()
     {
@@ -60,7 +64,7 @@ public partial class SalesReportWindow : Window
 
     private void Reset_Click(object sender, RoutedEventArgs e)
     {
-        DpStart.SelectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+        DpStart.SelectedDate = FirstDayOfCurrentMonth();
         DpEnd.SelectedDate = DateTime.Today;
         LoadReport();
     }

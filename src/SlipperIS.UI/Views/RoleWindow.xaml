@@ -66,7 +66,7 @@
                 <Button Content="✏️ 编辑" Padding="10,5" Margin="0,0,4,0"
                         Background="#FF9800" Foreground="White" BorderThickness="0"
                         Cursor="Hand" Click="EditRole_Click"/>
-                <Button Content="🗑️ 删" Padding="10,5"
+                <Button Content="🗑️ 删除" Padding="10,5"
                         Background="#F44336" Foreground="White" BorderThickness="0"
                         Cursor="Hand" Click="DeleteRole_Click"/>
             </StackPanel>

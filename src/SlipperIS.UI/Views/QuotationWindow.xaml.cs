@@ -91,7 +91,12 @@ public partial class QuotationWindow : Window
         }
 
         decimal.TryParse(TxtUnitPrice.Text, out var price);
-        decimal.TryParse(TxtDiscount.Text, out var discount);
+
+        if (!decimal.TryParse(TxtDiscount.Text, out var discount))
+        {
+            MessageBox.Show("折扣格式无效，将使用 0%。", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
+            discount = 0;
+        }
 
         var unitPrice = price > 0 ? price : product.SalesPrice;
         var lineAmount = unitPrice * qty * (1 - discount / 100);
@@ -143,7 +148,7 @@ public partial class QuotationWindow : Window
             return;
         }
 
-        var quoteNumber = $"QT{DateTime.Now:yyyyMMddHHmmss}";
+        var quoteNumber = $"QT{DateTime.Now:yyyyMMddHHmmssfff}";
         var total = _newQuoteLines.Sum(l => l.UnitPrice * l.Quantity);
         var finalAmount = _newQuoteLines.Sum(l => l.LineAmount);
 
@@ -238,7 +243,7 @@ public partial class QuotationWindow : Window
             var quotation = _db.Quotations.Include(q => q.QuotationDetails).FirstOrDefault(q => q.Id == selected.Id);
             if (quotation != null)
             {
-                var orderNumber = $"SO{DateTime.Now:yyyyMMddHHmmss}";
+                var orderNumber = $"SO{DateTime.Now:yyyyMMddHHmmssfff}";
                 var order = new SalesOrder
                 {
                     OrderNumber = orderNumber,

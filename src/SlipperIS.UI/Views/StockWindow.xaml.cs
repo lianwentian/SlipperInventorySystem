@@ -99,13 +99,22 @@ public partial class StockWindow : Window
         var product = _db.Products.Find(_selectedProductId);
         if (product == null) return;
 
-        // 计算新库存
-        int newQty = typePart switch
+        int newQty;
+        try
         {
-            "In" => product.StockQuantity + qty,
-            "Out" => product.StockQuantity - qty,
-            _ => qty // Adjustment = set to value
-        };
+            newQty = typePart switch
+            {
+                "In" => product.StockQuantity + qty,
+                "Out" => product.StockQuantity - qty,
+                "Adjustment" => qty, // 直接设置库存数量
+                _ => throw new InvalidOperationException($"未知的调整类型：{typePart}")
+            };
+        }
+        catch (InvalidOperationException ex)
+        {
+            MessageBox.Show(ex.Message, "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
 
         if (newQty < 0)
         {

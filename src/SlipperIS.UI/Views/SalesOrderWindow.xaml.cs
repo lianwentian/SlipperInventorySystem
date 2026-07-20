@@ -145,7 +145,7 @@ public partial class SalesOrderWindow : Window
         }
 
         // 生成订单号
-        var orderNumber = $"SO{DateTime.Now:yyyyMMddHHmmss}";
+        var orderNumber = $"SO{DateTime.Now:yyyyMMddHHmmssfff}";
         var total = _newOrderLines.Sum(l => l.LineAmount);
 
         var order = new SalesOrder

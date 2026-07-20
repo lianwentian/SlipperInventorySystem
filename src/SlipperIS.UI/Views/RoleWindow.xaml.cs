@@ -12,6 +12,9 @@ namespace SlipperIS.UI.Views;
 /// </summary>
 public partial class RoleWindow : Window
 {
+    /// <summary>系统内置管理员角色 ID，受保护不可删除</summary>
+    private const int SystemAdminRoleId = 1;
+
     private SlipperDbContext _db;
     private List<Role> _roles = new();
     private List<PermissionItem> _permissions = new();
@@ -89,7 +92,7 @@ public partial class RoleWindow : Window
             return;
         }
 
-        if (role.Id == 1)
+        if (role.Id == SystemAdminRoleId)
         {
             MessageBox.Show("不能删除管理员角色。", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;

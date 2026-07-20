@@ -28,7 +28,7 @@ public static class AppDbContextFactory
         if (_options == null)
             throw new InvalidOperationException(
                 "DbContext factory has not been initialized. " +
-                "Ensure AppDbContextFactory.Initialize() is called in App.xaml.cs OnStartup() before opening any windows.");
+                "Ensure AppDbContextFactory.Initialize() is called before opening any windows.");
 
         var context = new SlipperDbContext(_options);
         context.Database.EnsureCreated();

@@ -13,6 +13,9 @@ namespace SlipperIS.UI.Views;
 /// </summary>
 public partial class UserWindow : Window
 {
+    /// <summary>系统内置管理员账户 ID，受保护不可删除</summary>
+    private const int SystemAdminUserId = 1;
+
     private SlipperDbContext _db;
     private List<UserViewModel> _allUsers = new();
     private int _editingId = 0;
@@ -99,7 +102,7 @@ public partial class UserWindow : Window
             return;
         }
 
-        if (selected.Id == 1)
+        if (selected.Id == SystemAdminUserId)
         {
             MessageBox.Show("不能删除管理员账户。", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
