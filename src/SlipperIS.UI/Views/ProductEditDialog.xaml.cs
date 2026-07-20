@@ -57,12 +57,10 @@ public partial class ProductEditDialog : Window
             MessageBox.Show("请输入有效的销售价。", "验证", MessageBoxButton.OK, MessageBoxImage.Warning);
             return;
         }
-        if (!decimal.TryParse(VipPriceBox.Text.Replace(string.Empty, "0"), out var vipPrice))
+        if (!decimal.TryParse(string.IsNullOrWhiteSpace(VipPriceBox.Text) ? "0" : VipPriceBox.Text, out var vipPrice))
             vipPrice = 0;
         if (!int.TryParse(MinStockBox.Text, out var minStock))
             minStock = 10;
-
-        decimal.TryParse(string.IsNullOrWhiteSpace(VipPriceBox.Text) ? "0" : VipPriceBox.Text, out vipPrice);
 
         try
         {

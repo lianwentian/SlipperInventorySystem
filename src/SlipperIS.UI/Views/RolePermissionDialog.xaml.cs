@@ -49,14 +49,10 @@ public partial class RolePermissionDialog : Window
             db.RolePermissions.RemoveRange(existing);
             db.SaveChanges();
 
-            var maxId = db.RolePermissions.Any() ? db.RolePermissions.Max(rp => rp.Id) : 0;
-            int nextId = maxId + 1;
-
             foreach (var item in _items.Where(x => x.IsAssigned))
             {
                 db.RolePermissions.Add(new RolePermission
                 {
-                    Id = nextId++,
                     RoleId = _role.Id,
                     PermissionId = item.PermissionId
                 });

@@ -34,8 +34,7 @@
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,5">
                     <TextBlock Text="客户 *：" Width="70" VerticalAlignment="Center"/>
                     <ComboBox x:Name="CustomerCombo" Width="200" Padding="5,3"
-                              DisplayMemberPath="CustomerName" SelectedValuePath="Id"
-                              SelectionChanged="CustomerCombo_SelectionChanged"/>
+                              DisplayMemberPath="CustomerName" SelectedValuePath="Id"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="10,5">

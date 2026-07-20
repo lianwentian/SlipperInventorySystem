@@ -103,8 +103,6 @@ public partial class SalesOrderEditDialog : Window
         }
     }
 
-    private void CustomerCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) { }
-
     private void AddLine_Click(object sender, RoutedEventArgs e)
     {
         if (_isReadOnly) return;
