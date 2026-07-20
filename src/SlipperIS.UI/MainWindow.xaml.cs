@@ -1,4 +1,5 @@
 using System.Windows;
+using SlipperIS.UI.Views;
 
 namespace SlipperIS.UI
 {
@@ -16,52 +17,52 @@ namespace SlipperIS.UI
 
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("产品管理功能", "提示");
+            new ProductWindow { Owner = this }.ShowDialog();
         }
 
         private void Stock_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("库存管理功能", "提示");
+            new StockWindow { Owner = this }.ShowDialog();
         }
 
         private void SalesOrder_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("销售订单功能", "提示");
+            new SalesOrderWindow { Owner = this }.ShowDialog();
         }
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("客户管理功能", "提示");
+            new CustomerWindow { Owner = this }.ShowDialog();
         }
 
         private void Quotation_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("报价单功能", "提示");
+            new QuotationWindow { Owner = this }.ShowDialog();
         }
 
         private void SalesReport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("销售报表功能", "提示");
+            new SalesReportWindow { Owner = this }.ShowDialog();
         }
 
         private void StockReport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("库存报表功能", "提示");
+            new StockReportWindow { Owner = this }.ShowDialog();
         }
 
         private void ProductImage_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("产品图片预览功能", "提示");
+            new ProductImageWindow { Owner = this }.ShowDialog();
         }
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("用户管理功能", "提示");
+            new UserWindow { Owner = this }.ShowDialog();
         }
 
         private void Role_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("角色权限功能", "提示");
+            new RoleWindow { Owner = this }.ShowDialog();
         }
 
         private void About_Click(object sender, RoutedEventArgs e)

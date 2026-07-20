@@ -1,0 +1,29 @@
+<Window x:Class="SlipperIS.UI.Views.RolePermissionDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="权限分配" Height="500" Width="500"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="保存" Click="Save_Click" Background="#2196F3" Foreground="White"
+                    Padding="20,7" Margin="0,0,5,0" BorderThickness="0" Cursor="Hand"/>
+            <Button Content="取消" Click="Cancel_Click" Padding="20,7" Cursor="Hand"/>
+        </StackPanel>
+
+        <TextBlock x:Name="RoleNameText" DockPanel.Dock="Top" FontSize="14" FontWeight="Bold"
+                   Margin="0,0,0,10"/>
+
+        <Border BorderBrush="#DDD" BorderThickness="1">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="PermissionList" Margin="5">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding DisplayName}" IsChecked="{Binding IsAssigned}"
+                                      Margin="5,3" Padding="5,0"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+</Window>
