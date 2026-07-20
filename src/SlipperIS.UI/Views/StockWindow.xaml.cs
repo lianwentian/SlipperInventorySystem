@@ -87,8 +87,14 @@ public partial class StockWindow : Window
         }
 
         var typeItem = CmbAdjType.SelectedItem as ComboBoxItem;
-        var typeStr = typeItem?.Content?.ToString() ?? "Adjustment";
-        var typePart = typeStr.Split(' ')[1].TrimStart('(').TrimEnd(')');
+        var typeStr = typeItem?.Content?.ToString() ?? string.Empty;
+        var parts = typeStr.Split(' ');
+        if (parts.Length < 2)
+        {
+            MessageBox.Show("请选择有效的调整类型。", "验证错误", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return;
+        }
+        var typePart = parts[1].TrimStart('(').TrimEnd(')');
 
         var product = _db.Products.Find(_selectedProductId);
         if (product == null) return;
@@ -114,7 +120,7 @@ public partial class StockWindow : Window
             Quantity = qty,
             Type = typePart,
             Reason = TxtAdjReason.Text.Trim(),
-            CreatedByUserId = 1, // 默认管理员
+            CreatedByUserId = CurrentSession.UserId,
             CreatedAt = DateTime.Now
         };
         _db.StockRecords.Add(record);

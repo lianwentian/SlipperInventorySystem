@@ -168,13 +168,11 @@ public partial class RoleWindow : Window
         _db.RolePermissions.RemoveRange(existingPermissions);
 
         var grantedPermissions = _permissions.Where(p => p.IsGranted).ToList();
-        int nextId = (_db.RolePermissions.Any() ? _db.RolePermissions.Max(rp => rp.Id) : 0) + 1;
 
         foreach (var perm in grantedPermissions)
         {
             _db.RolePermissions.Add(new RolePermission
             {
-                Id = nextId++,
                 RoleId = _selectedRoleId,
                 PermissionId = perm.Id
             });

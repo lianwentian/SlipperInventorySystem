@@ -151,7 +151,7 @@ public partial class QuotationWindow : Window
         {
             QuotationNumber = quoteNumber,
             CustomerId = customer.Id,
-            CreatedByUserId = 1,
+            CreatedByUserId = CurrentSession.UserId,
             QuotationDate = DateTime.Now,
             ValidUntilDate = DpValidUntil.SelectedDate ?? DateTime.Today.AddDays(30),
             TotalAmount = total,
@@ -243,7 +243,7 @@ public partial class QuotationWindow : Window
                 {
                     OrderNumber = orderNumber,
                     CustomerId = quotation.CustomerId,
-                    CreatedByUserId = 1,
+                    CreatedByUserId = CurrentSession.UserId,
                     OrderDate = DateTime.Now,
                     DeliveryDate = DateTime.Today.AddDays(7),
                     TotalAmount = quotation.TotalAmount,

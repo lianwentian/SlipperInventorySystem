@@ -106,7 +106,6 @@ public partial class SalesOrderWindow : Window
             UnitPrice = price > 0 ? price : product.SalesPrice,
             LineAmount = qty * (price > 0 ? price : product.SalesPrice)
         };
-        line.UnitPrice = line.LineAmount / qty;
 
         _newOrderLines.Add(line);
         DetailGrid.ItemsSource = null;
@@ -153,7 +152,7 @@ public partial class SalesOrderWindow : Window
         {
             OrderNumber = orderNumber,
             CustomerId = customer.Id,
-            CreatedByUserId = 1,
+            CreatedByUserId = CurrentSession.UserId,
             OrderDate = DateTime.Now,
             DeliveryDate = DpDelivery.SelectedDate ?? DateTime.Today.AddDays(7),
             TotalAmount = total,

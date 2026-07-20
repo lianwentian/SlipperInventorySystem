@@ -113,6 +113,19 @@ public partial class UserWindow : Window
             var user = _db.Users.Find(selected.Id);
             if (user != null)
             {
+                // 检查该用户是否有关联记录，防止外键约束冲突
+                bool hasOrders = _db.SalesOrders.Any(o => o.CreatedByUserId == selected.Id);
+                bool hasQuotations = _db.Quotations.Any(q => q.CreatedByUserId == selected.Id);
+                bool hasStockRecords = _db.StockRecords.Any(r => r.CreatedByUserId == selected.Id);
+
+                if (hasOrders || hasQuotations || hasStockRecords)
+                {
+                    MessageBox.Show(
+                        $"用户「{selected.Username}」存在关联的订单、报价单或库存记录，无法删除。\n请先转移或删除该用户的关联数据。",
+                        "无法删除", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 _db.Users.Remove(user);
                 _db.SaveChanges();
                 LoadUsers();
