@@ -1,4 +1,5 @@
 using System.Windows;
+using SlipperIS.UI.Views;
 
 namespace SlipperIS.UI
 {
@@ -16,52 +17,52 @@ namespace SlipperIS.UI
 
         private void Products_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("产品管理功能", "提示");
+            OpenWindow<ProductWindow>();
         }
 
         private void Stock_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("库存管理功能", "提示");
+            OpenWindow<StockWindow>();
         }
 
         private void SalesOrder_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("销售订单功能", "提示");
+            OpenWindow<SalesOrderWindow>();
         }
 
         private void Customer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("客户管理功能", "提示");
+            OpenWindow<CustomerWindow>();
         }
 
         private void Quotation_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("报价单功能", "提示");
+            OpenWindow<QuotationWindow>();
         }
 
         private void SalesReport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("销售报表功能", "提示");
+            OpenWindow<SalesReportWindow>();
         }
 
         private void StockReport_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("库存报表功能", "提示");
+            OpenWindow<StockReportWindow>();
         }
 
         private void ProductImage_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("产品图片预览功能", "提示");
+            MessageBox.Show("产品图片预览功能即将推出。", "提示", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("用户管理功能", "提示");
+            OpenWindow<UserWindow>();
         }
 
         private void Role_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("角色权限功能", "提示");
+            OpenWindow<RoleWindow>();
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
@@ -76,6 +77,23 @@ namespace SlipperIS.UI
                           "✓ 权限管理\n\n" +
                           "版本: 1.0.0\n" +
                           "2026年7月", "关于系统");
+        }
+
+        /// <summary>
+        /// 通用方法：打开一个功能窗口，异常时显示错误信息
+        /// </summary>
+        private static void OpenWindow<T>() where T : Window, new()
+        {
+            try
+            {
+                var window = new T();
+                window.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"打开窗口时发生错误：{ex.Message}", "错误",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

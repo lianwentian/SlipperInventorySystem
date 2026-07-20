@@ -1,0 +1,110 @@
+<Window x:Class="SlipperIS.UI.Views.RoleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="角色权限管理" Height="620" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 左侧角色列表 -->
+        <Grid Grid.Column="0" Margin="8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="角色列表" FontWeight="Bold" FontSize="14"
+                       VerticalAlignment="Center" Foreground="#333"/>
+
+            <ListBox x:Name="RoleList" Grid.Row="1"
+                     BorderBrush="#DDD" BorderThickness="1"
+                     Background="White" SelectionMode="Single"
+                     SelectionChanged="RoleList_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="4,2">
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="13"/>
+                            <TextBlock Text="{Binding Description}" FontSize="11" Foreground="#777"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <!-- 角色编辑 -->
+            <Border x:Name="RoleEditPanel" Grid.Row="2" Visibility="Collapsed"
+                    Background="White" Margin="0,4" Padding="8"
+                    BorderBrush="#DDD" BorderThickness="1" CornerRadius="4">
+                <StackPanel>
+                    <TextBlock x:Name="RoleEditTitle" Text="添加角色" FontWeight="Bold" Margin="0,0,0,4" Foreground="#333"/>
+                    <TextBlock Text="角色名称 *" Foreground="#555" FontSize="11"/>
+                    <TextBox x:Name="TxtRoleName" Height="28" Padding="4,2" Margin="0,2,0,4"
+                             BorderBrush="#CCC" BorderThickness="1"/>
+                    <TextBlock Text="描述" Foreground="#555" FontSize="11"/>
+                    <TextBox x:Name="TxtRoleDesc" Height="28" Padding="4,2" Margin="0,2,0,4"
+                             BorderBrush="#CCC" BorderThickness="1"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="保存" Padding="10,4" Margin="0,0,4,0"
+                                Background="#4CAF50" Foreground="White" BorderThickness="0"
+                                Cursor="Hand" Click="SaveRole_Click"/>
+                        <Button Content="取消" Padding="10,4"
+                                Background="#9E9E9E" Foreground="White" BorderThickness="0"
+                                Cursor="Hand" Click="CancelRoleEdit_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="➕ 添加" Padding="10,5" Margin="0,0,4,0"
+                        Background="#2196F3" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="AddRole_Click"/>
+                <Button Content="✏️ 编辑" Padding="10,5" Margin="0,0,4,0"
+                        Background="#FF9800" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="EditRole_Click"/>
+                <Button Content="🗑️ 删除" Padding="10,5"
+                        Background="#F44336" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="DeleteRole_Click"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 右侧权限列表 -->
+        <Grid Grid.Column="1" Margin="0,8,8,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" x:Name="PermTitle" Text="权限分配（选择角色后显示）"
+                       FontWeight="Bold" FontSize="14" VerticalAlignment="Center" Foreground="#333"/>
+
+            <DataGrid x:Name="PermGrid" Grid.Row="1"
+                      AutoGenerateColumns="False" CanUserAddRows="False"
+                      IsReadOnly="True" SelectionMode="Single"
+                      GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                      AlternatingRowBackground="#FAFAFA"
+                      BorderBrush="#DDD" BorderThickness="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="模块" Binding="{Binding Module}" Width="100"/>
+                    <DataGridTextColumn Header="操作" Binding="{Binding Action}" Width="100"/>
+                    <DataGridTextColumn Header="权限名称" Binding="{Binding Name}" Width="*"/>
+                    <DataGridCheckBoxColumn Header="已授权" Binding="{Binding IsGranted}" Width="70"
+                                           IsReadOnly="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Content="💾 保存权限" Padding="12,6"
+                        Background="#4CAF50" Foreground="White" BorderThickness="0"
+                        Cursor="Hand" Click="SavePermissions_Click"/>
+                <TextBlock x:Name="PermStatusText" VerticalAlignment="Center"
+                           Margin="12,0,0,0" Foreground="#666" FontSize="12"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
